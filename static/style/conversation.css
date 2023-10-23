@@ -1,0 +1,51 @@
+.conversation {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  overflow-y: auto;
+  width: 100%;
+  gap: 2rem;
+}
+.conversation .bot-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 5%;
+  padding-right: 8%;
+  width: 87%;
+}
+.conversation .bot-message .text {
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 1.2rem;
+  color: rgb(60, 60, 60);
+}
+.conversation .bot-message .user {
+  font-family: "SF Pro Display", sans-serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: rgb(100, 100, 100);
+  right: 0;
+  bottom: 0;
+}
+.conversation .user-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding-right: 5%;
+  padding-left: 8%;
+  width: 87%;
+}
+.conversation .user-message .text {
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 1.2rem;
+  color: rgb(60, 60, 60);
+}
+.conversation .user-message .user {
+  font-family: "SF Pro Display", sans-serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: rgb(100, 100, 100);
+  right: 0;
+  bottom: 0;
+}/*# sourceMappingURL=conversation.css.map */

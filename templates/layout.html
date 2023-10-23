@@ -3,21 +3,24 @@
     <head>
         <meta charset="UTF-8">
         <title>PenPen</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename="style/layout.css") }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/layout.css') }}">
         {% block link %}{% endblock %}
     </head>
     <body>
-        <!-- HEADER -->
-        <header>
-            <h1>PenPen</h1>
-        </header>
-        <!-- CONTENT -->
-        <div id="block-body">
-            {% block body %}{% endblock %}
+        <div id="wrapper">
+            <!-- HEADER -->
+                <div id="header">
+                    <h1>PenPen</h1>
+                </div>
+            <!-- CONTENT -->
+                <div id="block-body">
+                    {% block body %}{% endblock %}
+                </div>
+            <!-- FOOTER -->
+                <div id="footer">
+                    <p>PenPen v0.1-beta</p>
+                    <a href="{{url_for('reset')}}">Reset the conversation</a>
+                </div>
         </div>
-        <!-- FOOTER -->
-        <footer>
-            <p>PenPen v0.1-beta</p>
-        </footer>
     </body>
 </html>

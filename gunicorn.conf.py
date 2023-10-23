@@ -1,6 +1,6 @@
 import multiprocessing
 
-workers = 2
+workers = multiprocessing.cpu_count() * 2 + 1
 
 # Always use https in production
 forwarded_allow_ips = '*'
