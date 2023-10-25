@@ -12,7 +12,9 @@ model = BlenderbotForConditionalGeneration.from_pretrained(
 )
 tokenizer = BlenderbotTokenizer.from_pretrained(
     "facebook/blenderbot-400M-distill", 
-    cache_dir=transformers_path
+    cache_dir=transformers_path,
+    padding='max_length',
+    truncation=True,
 )
 chatbot = ConversationalPipeline(
     model=model, 
@@ -20,7 +22,7 @@ chatbot = ConversationalPipeline(
 )
 
 # Conversation setup
-conversation = Conversation(max_length=10000)
+conversation = Conversation()
 
 # Flask setup
 app = Flask(__name__)
