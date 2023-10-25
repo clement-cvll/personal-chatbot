@@ -6,5 +6,5 @@ Chatbot implemented for me to familiarize with LLM, HuggingFace and Transformers
 ```bash
 
 docker build -t chatbot .
-docker run -ti -p 8080:8080 chatbot
+docker run -it -p 8080:8080 chatbot
 ```
