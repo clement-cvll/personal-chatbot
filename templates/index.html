@@ -6,6 +6,10 @@
 {% endblock %}
 
 {% block body %}
+    <script src="{{ url_for('static', filename='js/conversation.js') }}">
+
+    </script>
+
     <div class="main">
         <div class="conversation">
             {% for message in messages %}
@@ -24,9 +28,9 @@
         </div>
         <div class="input">
             <form action="{{ url_for('add_input') }}" method="post" class="input-form" id="input-form">
-                <input type="text" name="question" placeholder="Ask me anything" class="text-input">
+                <input type="text" name="question" placeholder="Ask me anything" class="text-input" id="user-input">
             </form>
-            <button class="send" type="submit" form="input-form" value="Submit">Send</button>
+            <button onclick="sendMessage()" class="send">Send</button>
         </div>
     </div>
 {% endblock %}

@@ -1,24 +1,27 @@
-from transformers import BlenderbotTokenizer, BlenderbotForConditionalGeneration, Conversation, ConversationalPipeline
-from flask import Flask, request, jsonify, render_template, url_for, redirect, session
+from transformers import AutoTokenizer, AutoModelForCausalLM, Conversation, ConversationalPipeline
+from flask import Flask, request, render_template, url_for, redirect
 import torch, os
 
 # Transformes file path
-transformers_path = "./transformers"
+transformers_path = os.path.join("transformers")
 
 # Model setup
-model = BlenderbotForConditionalGeneration.from_pretrained(
-    "facebook/blenderbot-400M-distill", 
+model = AutoModelForCausalLM.from_pretrained(
+    "microsoft/DialoGPT-small", 
     cache_dir=transformers_path
 )
-tokenizer = BlenderbotTokenizer.from_pretrained(
-    "facebook/blenderbot-400M-distill", 
+tokenizer = AutoTokenizer.from_pretrained(
+    "microsoft/DialoGPT-small", 
     cache_dir=transformers_path,
     padding='max_length',
+    max_length=1024,
     truncation=True,
+    padding_side='left'
 )
 chatbot = ConversationalPipeline(
     model=model, 
     tokenizer=tokenizer,
+    max_length=1024
 )
 
 # Conversation setup
@@ -42,11 +45,11 @@ def index():
         })
     return render_template("index.html", messages=messages)
 
-@app.route("/add_input", methods=["POST", "GET"])
+@app.route("/add_input", methods=["POST"])
 def add_input():
     # Process user input
     global conversation
-    text = request.form["question"]
+    text = request.form["user_message"]
     conversation.add_user_input(text)
     conversation = chatbot(conversation)
     messages = []
@@ -55,7 +58,7 @@ def add_input():
             "is_user": is_user,
             "text": text
         })
-    return redirect(url_for("index"))
+    return 'ok', 200
 
 @app.route("/reset", methods=["POST", "GET"])
 def reset():
