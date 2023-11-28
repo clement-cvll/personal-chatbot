@@ -1,4 +1,4 @@
-# personnal-chatbot
+# personal-chatbot
 Chatbot implemented for me to familiarize with LLM, HuggingFace and Transformers.
 
 ## Installation
